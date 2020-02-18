@@ -19,7 +19,7 @@ class MatrixMadness:
     Includes various related methods.
     """
 
-    def __init__(self, matrix):
+    def __init__(self, matrix = None):
         self.matrix = matrix
         self.math = MathClass()
 
