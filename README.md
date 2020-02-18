@@ -17,6 +17,28 @@ Below is a screenshot showing RREF matrices<sup>[3]</sup>:
 
 ![RREF examples](/static/rref1.png)
 
+---
+## Example Usage
+``` python
+import rref
+mm = rref.MatrixMadness()
+
+### Create a sample matrix of 20 x 20 with random integers 
+### in the range of -5 to 20.
+matrix = mm.creatrix(20, [-5, 20])
+
+### Create an RREF instance with your matrix.
+r = rref.RREF(matrix)
+
+### Run the processor
+# Note: The output matrix will be in the r.mm.matrix variable.
+r.run()
+
+### Print the matrix to check results.
+print([i for i in r.mm.matrix])
+
+```
+
 
 [1]: https://people.math.carleton.ca/~kcheung/math/notes/MATH1107/wk04/04_reduced_row-echelon_form.html
 [2]: https://en.wikipedia.org/wiki/Row_echelon_form
