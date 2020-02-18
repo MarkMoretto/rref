@@ -1,13 +1,12 @@
 
 
-
 __all__ = [
-        'RANGE',
-		'ENUM',
-		'SUM',
-		'LEN',
-		'ABS',
-        ]
+    "RANGE",
+    "ENUM",
+    "SUM",
+    "LEN",
+    "ABS",
+]
 
 
 def RANGE(start, stop=None, increment=None):

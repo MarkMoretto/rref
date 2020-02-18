@@ -1,30 +1,30 @@
 
 __all__ = [
-	"MatrixMadness"
-	]
+    "MatrixMadness"
+]
 
 """
 Class for creating and manipulating matrix structures
 """
 
 from random import randrange
-from utils_ import *
-from math_ import *
+
+# Bring in math and utils functions
+from .helpers import *
+
 
 class MatrixMadness:
     """
     Create a matrix of random values from a given rangeo of integers.
     Includes various related methods.
     """
-    def __init__(self, matrix=None):
-        self.math = MathClass()
-        self.matrix = matrix
-        if not self.matrix is None:
-            self.update_matrix(self.matrix)
 
+    def __init__(self, matrix):
+        self.matrix = matrix
+        self.math = MathClass()
 
     def __repr__(self):
-        return 'Matrix Madness...'
+        return "<MatrixMadness class>"
 
     @property
     def matrix(self):
@@ -39,11 +39,9 @@ class MatrixMadness:
         self.row_len = LEN(self.matrix)
         self.col_len = LEN(self.matrix[0])
 
-
     def update_matrix(self, matrix):
         self.matrix = matrix
         self.__set_basic_measures()
-
 
     @staticmethod
     def creatrix(n_rows, n_cols, random_range=[-5, 20]):
@@ -52,58 +50,47 @@ class MatrixMadness:
         """
         return [[randrange(random_range[0], random_range[1]) for i in RANGE(n_cols)] for j in RANGE(n_rows)]
 
-
     def sort_it(self, descending=True):
         """Sort matrix instance inplace."""
-        self.update_matrix(sorted(self.matrix, key=lambda x: x[0], reverse=descending))
-
+        self.update_matrix(
+            sorted(self.matrix, key=lambda x: x[0], reverse=descending))
 
     @staticmethod
     def unravel(iterable):
         """Flatten a 2-D iterable into a list of values."""
         return [i for j in iterable for i in j]
 
-
     def transpose(self, matrix):
         """Switch matrix rows for columns."""
         return [[matrix[j][i] for j in RANGE(LEN(matrix))] for i in RANGE(LEN(matrix[0]))]
-
-
 
     def inverse_rows(self, matrix):
         """Returns reverse order of rows in matrix."""
         return matrix[::-1]
 
-
     def inverse_columns(self, matrix):
         """Reverse order of values in each column"""
         return [row[::-1] for row in matrix]
-
 
     def flip_matrix(self, matrix):
         """Invert matrix. Use again to return matrix to original form."""
         return self.inverse_rows(self.inverse_columns(matrix))
 
-
     def quarter_rotate(self, matrix, direction='CW'):
         """
         Rotate a matrix one-quarter (90-degrees) turn.  CW for clockwise and CCW for counterclockwise.
         """
-        return self.inverse_rows(self.transpose(matrix)) if direction=='CCW' else self.inverse_cols(self.transpose(matrix))
-
+        return self.inverse_rows(self.transpose(matrix)) if direction == 'CCW' else self.inverse_columns(self.transpose(matrix))
 
     @staticmethod
     def get_row(row_index, matrix):
         """Retrieve row by index."""
         return [matrix[row_index][i] for i, v in ENUM(matrix[0])]
 
-
     @staticmethod
     def get_column(column_index, matrix):
         """Retrieve column by index."""
         return [matrix[i][column_index] for i, v in ENUM(matrix)]
-
-
 
     @staticmethod
     def sv_product(scalar, vector):
@@ -114,7 +101,6 @@ class MatrixMadness:
         """
         return [scalar * i for i in vector]
 
-
     @staticmethod
     def ROW_SUM(vector1, vector2):
         """
@@ -123,7 +109,6 @@ class MatrixMadness:
         """
         for i in list(zip(vector1, vector2)):
             yield i[0] + i[1]
-
 
     @staticmethod
     def no_negatives(matrix):
@@ -136,23 +121,23 @@ class MatrixMadness:
         """
         return [[matrix[i][j] * -1 if matrix[i][0] < 0 else matrix[i][j] for j in RANGE(LEN(matrix[0]))] for i in RANGE(LEN(matrix))]
 
-
     def round_matrix_values(self, matrix=None, n_places=1, inplace=True):
         if matrix is None:
             matrix = self.matrix
 
-        mtrx = [[self.math.ROUND(matrix[i][j], n_places) for j in RANGE(LEN(matrix[0]))] for i in RANGE(LEN(matrix))]
+        mtrx = [[self.math.ROUND(matrix[i][j], n_places) for j in RANGE(
+            LEN(matrix[0]))] for i in RANGE(LEN(matrix))]
         if inplace:
             self.update_matrix(mtrx)
         else:
             return mtrx
 
-
     @staticmethod
     def print_matrix(matrix):
-        for i in matrix: print(i)
-
+        for i in matrix:
+            print(i)
 
     @staticmethod
     def print_matrix_csv(matrix):
-        print('\n'.join([','.join([str(i) for i in matrix[x]]) for x in RANGE(LEN(matrix))]))
+        print('\n'.join([','.join([str(i) for i in matrix[x]])
+                         for x in RANGE(LEN(matrix))]))

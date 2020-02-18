@@ -1,11 +1,16 @@
 
 __all__ = [
-	"MathClass"
-	]
+    "MathClass"
+]
 
 """
 Class to handle some basic mathematical functions.
 """
+
+from .utils_ import (
+    LEN, SUM, RANGE
+)
+
 
 class MathClass:
     """
@@ -25,7 +30,6 @@ class MathClass:
     def FLOOR(n):
         return n - (n % 1)
 
-
     def ROUND(self, float_value, n_of_digits=None):
         """Rounding function. Works with floating point values."""
         if n_of_digits is None:
@@ -33,12 +37,11 @@ class MathClass:
 
         factor = (10 ** n_of_digits)
 
-        if SUM([float_value%1 for i in RANGE(n_of_digits)]) == 0:
+        if SUM([float_value % 1 for i in RANGE(n_of_digits)]) == 0:
             res = float_value
         else:
             res = self.CEIL(float_value * factor) / factor
         return res
-
 
     def __decimal_len(self, n):
         """Find length of decimals."""
@@ -48,13 +51,11 @@ class MathClass:
         """Divisor multiple for rounding methods."""
         return 10 ** (n - 1)
 
-
     def ROUNDUP(self, float_value):
         """Round up to nearest decimal place"""
         dec_len = self.__decimal_len(float_value)
         factor = self.__factor(dec_len)
         return (int(float_value * factor) + 1) / factor
-
 
     def ROUNDDOWN(self, float_value):
         """Round down to nearest decimal place"""
