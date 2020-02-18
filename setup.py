@@ -22,7 +22,7 @@ setup(
     packages=find_packages(
         exclude=["static", ]
     ),
-    classifiers=(
+    classifiers=[
         "Development Status :: 4 - Beta",
         "Intended Audience :: Education",
         "Intended Audience :: Science/Research",
@@ -37,8 +37,13 @@ setup(
         "Topic :: Scientific/Engineering :: Image Recognition",
         "Topic :: Scientific/Engineering :: Information Analysis",
         "Topic :: Utilities",
-    ),
-    keywords=["rref", "matrix", "row reduced echelon form",
-              "echelon", "Gaussian elimination", "linear algebra", ],
-    package_dir={'': 'rref'},
+    ],
+    keywords=[
+        "rref",
+        "matrix",
+        "row reduced echelon form",
+        "echelon",
+        "Gaussian elimination",
+        "linear algebra",
+    ],
 )
