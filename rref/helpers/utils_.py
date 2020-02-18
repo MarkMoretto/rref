@@ -6,6 +6,7 @@ __all__ = [
     "SUM",
     "LEN",
     "ABS",
+    "cls_property",
 ]
 
 
@@ -74,3 +75,21 @@ def ENUM(iterable, start=0, increment=1):
 def ABS(n):
     """Returns absolute value of a number."""
     return n if n >= 0 else n * -1
+
+
+def cls_property(name, data_type):
+    """Helper function to define class properties."""
+
+    masked_name = "__" + name
+
+    @property
+    def prop(self):
+        return getattr(self, masked_name)
+
+    @prop.setter
+    def prop(self, value):
+        if not isinstance(value, data_type):
+            raise TypeError(f"Expected data type for {name} is {data_type}.")
+        setattr(self, masked_name, value)
+
+    return prop
