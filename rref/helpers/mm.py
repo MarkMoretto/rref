@@ -19,7 +19,7 @@ class MatrixMadness:
     Includes various related methods.
     """
 
-    def __init__(self, matrix = None):
+    def __init__(self, matrix=None):
         self.matrix = matrix
         self.math = MathClass()
 
@@ -44,11 +44,21 @@ class MatrixMadness:
         self.__set_basic_measures()
 
     @staticmethod
-    def creatrix(n_rows, n_cols, random_range=[-5, 20]):
+    def creatrix(n_dimensions, random_range=[-5, 20]):
         """
-        Create a 2-D matrix of random values
+        Create a 2-D matrix of random values.
+
+        Parameter:
+            n_dimensions: The count of rows and columns in the matrix.
+                Example: n_dimensions = 20 will produce a 20x20 matrix of random values
+
+            random_range: A two-integer list from which the domain of the
+                    random integer values will be generated.
         """
-        return [[randrange(random_range[0], random_range[1]) for i in RANGE(n_cols)] for j in RANGE(n_rows)]
+        if len(random_range) == 2:
+            random_range = sorted(random_range)
+            return [[randrange(random_range[0], random_range[1]) for i in RANGE(n_cols)] for j in RANGE(n_rows)]
+        print("Please enter a two integer list for range of random values.")
 
     def sort_it(self, descending=True):
         """Sort matrix instance inplace."""
