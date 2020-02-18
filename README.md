@@ -15,7 +15,7 @@ A matrix is in reduced row-echelon form if it satisfies the following:
 
 Below is a screenshot showing RREF matrices<sup>[3]</sup>:
 
-![RREF examples](static\rref1.jpg)
+![RREF examples](/static/rref1.png)
 
 
 [1]: https://people.math.carleton.ca/~kcheung/math/notes/MATH1107/wk04/04_reduced_row-echelon_form.html
