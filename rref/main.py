@@ -1,14 +1,13 @@
 
 __all__ = [
     "RREF",
-    "MatrixMadness",
 ]
 
-from . import MatrixMadness, RANGE, ENUM
+
+from .helpers import MatrixMadness, RANGE, ENUM
+
 
 # Abstract base exception class
-
-
 class ExceptionalException(Exception):
     pass
 

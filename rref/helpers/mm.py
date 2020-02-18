@@ -10,7 +10,8 @@ Class for creating and manipulating matrix structures
 from random import randrange
 
 # Bring in math and utils functions
-from .helpers import *
+from .math_ import *
+from .utils_ import *
 
 
 class MatrixMadness:
@@ -26,14 +27,6 @@ class MatrixMadness:
     def __repr__(self):
         return "<MatrixMadness class>"
 
-    @property
-    def matrix(self):
-        return self.__matrix
-
-    @matrix.setter
-    def matrix(self, value):
-        return self.__matrix
-
     def __set_basic_measures(self):
         self.len = LEN(self.matrix)
         self.row_len = LEN(self.matrix)
@@ -44,20 +37,21 @@ class MatrixMadness:
         self.__set_basic_measures()
 
     @staticmethod
-    def creatrix(n_dimensions, random_range=[-5, 20]):
+    def creatrix(n_dimensions=20, random_range=[-5, 20]):
         """
         Create a 2-D matrix of random values.
 
         Parameter:
             n_dimensions: The count of rows and columns in the matrix.
                 Example: n_dimensions = 20 will produce a 20x20 matrix of random values
+                Default value is 20.
 
             random_range: A two-integer list from which the domain of the
                     random integer values will be generated.
         """
         if len(random_range) == 2:
             random_range = sorted(random_range)
-            return [[randrange(random_range[0], random_range[1]) for i in RANGE(n_cols)] for j in RANGE(n_rows)]
+            return [[randrange(random_range[0], random_range[1]) for i in RANGE(n_dimensions)] for j in RANGE(n_dimensions)]
         print("Please enter a two integer list for range of random values.")
 
     def sort_it(self, descending=True):

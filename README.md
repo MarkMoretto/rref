@@ -21,7 +21,9 @@ Below is a screenshot showing RREF matrices<sup>[3]</sup>:
 ## Example Usage
 ``` python
 import rref
-mm = rref.MatrixMadness()
+
+### Create an uninstanced matrix helper (MatrixMadness)
+mm = rref.main.MatrixMadness()
 
 ### Create a sample matrix of 20 x 20 with random integers 
 ### in the range of -5 to 20.
@@ -35,7 +37,8 @@ r = rref.RREF(matrix)
 r.run()
 
 ### Print the matrix to check results.
-print([i for i in r.mm.matrix])
+result = r.mm.matrix
+print([i for i in result])
 
 ```
 
