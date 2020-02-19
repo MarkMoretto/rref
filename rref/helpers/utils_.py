@@ -1,5 +1,3 @@
-
-
 __all__ = [
     "RANGE",
     "ENUM",
@@ -8,6 +6,8 @@ __all__ = [
     "ABS",
     "cls_property",
 ]
+
+import re
 
 
 def RANGE(start, stop=None, increment=None):
@@ -93,3 +93,19 @@ def cls_property(name, data_type):
         setattr(self, masked_name, value)
 
     return prop
+
+
+def stoi(n):
+    """String to integer. Handles negative values."""
+    return int(str(n).replace("-", "")) * -1 if "-" in n else int(n)
+
+
+def string_to_matrix(string_object):
+    """Transform string of matrix-like values to a real-life matrix."""
+    if len(string_object) > 0:
+        sso = string_object.strip()
+        lines = sso.split("\n")
+        out_mtrx = list()
+        for line in lines:
+            out_mtrx.append([stoi(i) for i in re.split(r"\s+", line)])
+        return out_mtrx
