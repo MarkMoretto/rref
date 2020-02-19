@@ -9,7 +9,7 @@ with open(rm_path, "r", encoding="utf-8") as rmf:
 
 setup(
     name="rref",
-    version="0.3.0",
+    version="0.3.1",
     author="Mark Moretto",
     author_email="otteromkram@gmail.com",
     description="Package to help transform 2-D matrix into reduced row-echelon form.",
