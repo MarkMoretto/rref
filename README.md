@@ -1,4 +1,4 @@
-# Reduced Row-Echelon Format library
+# Reduced Row-Echelon Form (RREF) library
 
 This is a simple library for transforming a 2-D matrix to reduced row-echelon form (RREF)<sup>[1]</sup>.
 
