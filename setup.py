@@ -9,10 +9,10 @@ with open(rm_path, "r", encoding="utf-8") as rmf:
 
 setup(
     name="rref",
-    version="0.2.2",
+    version="0.1.0",
     author="Mark Moretto",
     author_email="otteromkram@gmail.com",
-    description="Simple library to derive row-reduced echelon form from 2-D matrix.",
+    description="Package to help transform 2-D matrix into reduced row-echelon form.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     project_urls={
